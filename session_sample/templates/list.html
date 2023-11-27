@@ -1,0 +1,81 @@
+{% include 'menu.html'%}
+{% block content %} 
+
+
+{% load static %} 
+
+{%for i in recent_movies %}
+<p>{{ i.title | upper}}</p>
+
+{% endfor %}
+<h3 class="container mx-auto text-center my-3"> You are  Visited {{visits }} times </h3>
+
+<h3 class="container mx-auto text-center my-3"> LIST MOVIES</h3>
+
+<table class="table w-50 mx-auto">
+        <thead>
+          <tr>
+            <th scope="col">TITLE</th>
+            <th scope="col">DESCRIPTION</th>
+            <th scope="col">YEAR</th>
+            <th scope="col">EDIT/DELETE</th>
+       
+           
+          </tr>
+        </thead>
+        {%for i in movies%}
+        <tbody>
+          <tr>
+            <td>{{i.title | upper}}
+                {%if i.poster%}   
+                {% comment %} <img src="{{ i.poster.url }}" alt="{{ i.title }}"></img> {% endcomment %}
+        {%endif%}
+            </td>
+           
+            <td><p>{{i.description | default:"there is no any content in it"}}</p></td>
+            <td><h5>{{i.year}}</h5></td>
+            <td><a href="{% url 'edit' i.id %}">edit</a>/
+                <a href="{% url 'delete' i.id %}">delete</a>
+            </td>
+            
+            {%endfor%}
+          </tr>
+        </tbody>
+      </table>
+      {%endblock content%}   
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
